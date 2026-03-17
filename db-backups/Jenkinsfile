@@ -1,0 +1,24 @@
+pipeline{
+    agent any
+    triggers {
+        cron('H 23 * * 5') //every Friday
+    }
+    environment {
+        SUDO_PASS = credentials('SUDO')
+    }
+    stages{
+        stage('Backup') {
+            steps {
+                sh 'bash /home/user/svacer-test/backup-svacer.sh'
+            }
+        }
+    }
+    post {
+        success {
+            echo "Success!"
+        }
+        failure {
+            echo "FAILURE!"
+        }
+    }
+}
