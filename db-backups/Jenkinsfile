@@ -5,20 +5,29 @@ pipeline{
     }
     environment {
         SUDO_PASS = credentials('SUDO')
+        GH_TOKEN = credentials('GitHub-Kenzlee')
     }
     stages{
-        stage('Backup') {
+        stage('Checkout') {
             steps {
-                sh 'bash /home/user/svacer-test/backup-svacer.sh'
-            }
+                git (
+                    url: 'https://github.com/Kenzlee51/Jenkins.git'
+                    branch: 'main'
+                    credentialsId: 'GitHub-token'
+            )
         }
     }
+        stage('Backup') {
+            steps {
+                sh 'bash db-backups/svacer_dump-db_jenkins.sh'
+            }
+        }
     post {
         success {
-            echo "Success!"
+            echo "Бэкап завершён успешно (сборка #${BUILD_NUMBER})"
         }
         failure {
-            echo "FAILURE!"
+            echo "Бэкап завершился с ошибкой! (сборка #${BUILD_NUMBER})"
         }
     }
 }
