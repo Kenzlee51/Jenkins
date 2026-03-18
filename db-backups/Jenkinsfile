@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent { label 'svacer-server' }
     triggers {
         cron('H 23 * * 5')
     }
