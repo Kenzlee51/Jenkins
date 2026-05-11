@@ -24,7 +24,9 @@ fi
 
 # 1. Получаем проекты и зеркало
 PROJECTS=$(curl -s "${FLASK_URL}/api/projects")
+echo $PROJECTS
 MIRROR=$(curl -s "${FLASK_URL}/api/mirror_all")
+echo $MIRROR
 
 # Строим ассоциативный массив зеркальных записей
 declare -A mirror_map
