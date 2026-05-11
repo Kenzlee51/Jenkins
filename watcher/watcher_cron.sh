@@ -6,8 +6,8 @@
 FLASK_URL="http://192.168.25.77:5000"
 JENKINS_URL="http://your-jenkins:8080"          # Замените на реальный адрес Jenkins
 JENKINS_JOB_WORKER="worker-job"
-JENKINS_USER="your_username"                    # Логин Jenkins
-JENKINS_TOKEN="your_api_token"                  # API Token (создайте в профиле)
+JENKINS_USER="admin"                    # Логин Jenkins
+JENKINS_TOKEN="12345678"                  # API Token (создайте в профиле)
 
 # ------------------------------
 # Функции
